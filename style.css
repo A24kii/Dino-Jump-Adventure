@@ -1,0 +1,207 @@
+/* ==========================
+   Global Reset
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* ==========================
+   Body
+========================== */
+body {
+    min-height: 100vh;
+    background-color: rgb(25, 32, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ==========================
+   Title
+========================== */
+h1 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+/* ==========================
+   Game View
+========================== */
+.view {
+    background-image: url(imge/Free-Nature-Backgrounds-Pixel-Art3-1536x1024\ copy_1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50rem;
+    height: 23rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ==========================
+   Score Boards
+========================== */
+#bestscr {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 10px auto;
+    text-align: center;
+}
+
+#score {
+    position: relative;
+    text-align: center;
+    font-size: 15px;
+    top: 20px;
+    font-weight: 600;
+}
+
+/* ==========================
+   Player (Dino)
+========================== */
+#playcr {
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 290px;
+    left: 5rem;
+    z-index: 20;
+    transition: 0.3s ease;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.312);
+}
+
+/* Jump Animation */
+.jump {
+    animation: jumpmove 0.7s linear;
+}
+
+@keyframes jumpmove {
+    0%   { top: 280px; box-shadow: 0 3px rgba(0,0,0,0.312); }
+    30%  { top: 150px; box-shadow: 0 3px rgba(0,0,0,0.1); }
+    50%  { top: 130px; box-shadow: none; }
+    80%  { top: 150px; box-shadow: 0 3px rgba(0,0,0,0.1); }
+    100% { top: 280px; box-shadow: 0 3px rgba(0,0,0,0.312); }
+}
+
+/* ==========================
+   Ground
+========================== */
+.ground {
+    background-color: rgba(26, 154, 26, 0.654);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+}
+
+/* ==========================
+   Clouds
+========================== */
+.cloud1, .cloud2, .cloud3 {
+    background-color: #fff;
+    position: absolute;
+    padding: 20px 40px;
+    border-radius: 50px;
+    opacity: 0.8;
+}
+
+.cloud1 { bottom: 70%; animation: cloud1 20s -4s linear infinite; }
+.cloud2 { bottom: 50%; animation: cloud 15s linear infinite; }
+.cloud3 { bottom: 70%; left: 100px; animation: cloud1 20s linear infinite; }
+
+/* Cloud shapes */
+.cloud1 div,
+.cloud2 div,
+.cloud3 div {
+    background-color: #fff;
+    position: absolute;
+    padding: 20px 30px;
+    border-radius: 50px;
+    transform: rotate(90deg);
+    left: 10px;
+    bottom: 0.1px;
+}
+
+/* Cloud Animations */
+@keyframes cloud {
+    from { transform: translateX(800px); }
+    to   { transform: translateX(-100px); }
+}
+
+@keyframes cloud1 {
+    from { transform: translateX(800px); }
+    to   { transform: translateX(-200px); }
+}
+
+/* ==========================
+   Description
+========================== */
+.descr {
+    margin: 35px auto;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* ==========================
+   Button
+========================== */
+button {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+button:active {
+    background-color: rgb(95, 92, 92);
+    color: white;
+}
+
+/* ==========================
+   Obstacle (Block)
+========================== */
+#block {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    bottom: 1rem;
+    right: -5rem;
+    z-index: 10;
+    display: flex;
+    border-radius: 100px 100px 0 100px;
+    animation: blockmove 3s linear infinite;
+}
+
+@keyframes blockmove {
+    from { right: -5rem; }
+    to   { right: 100%; }
+}
+
+/* ==========================
+   Responsive
+========================== */
+@media screen and (max-width: 825px) {
+    .view { width: 42rem; height: 23rem; }
+    h1 { font-size: 30px; }
+}
+
+@media (max-width: 700px) {
+    h1 { font-size: 30px; }
+    #bestscr { font-size: 20px; }
+
+    .view { width: 22rem; height: 23rem; }
+
+    .descr {
+        font-size: 15px;
+        margin: 25px auto;
+    }
+
+    #block { animation: blockmove 2.5s linear infinite; }
+}
