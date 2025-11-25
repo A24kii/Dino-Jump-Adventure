@@ -2,10 +2,14 @@ const playcr = document.getElementById("playcr");
 const scorepoint = document.getElementById("score");
 const block = document.getElementById("block");
 const bestscr = document.getElementById("bestscr");
+const showdinosay = document.getElementById("showdinosay");
+
+let gameStarted = false;
 
 // time between jump
 const jumpTime = 750;
 function jump() {
+    startGame()
     if (!playcr.classList.contains('jump')) {
         playcr.classList.add('jump');
         setTimeout(() => playcr.classList.remove('jump'), jumpTime);
@@ -16,13 +20,25 @@ function jump() {
 // BEST SCORE INIT
 if (!localStorage.getItem("bestscr")) {
     localStorage.setItem("bestscr", 0);
+}else {
+    bestscr.textContent = "Best Score: " + localStorage.getItem("bestscr");
 }
+
 
 // SCORE
 
 let point = 0;
 
 // حاول تستخدم 60ms أو قيمة مناسبة للـ game loop
+function startGame(){
+    if (gameStarted) return;
+    gameStarted = true;
+    setTimeout(() => 
+    showdinosay.style.display = "none", 2000);
+
+
+
+
 const intervalId = setInterval(() => {
     point++;
     scorepoint.textContent = "Score: " + point;
@@ -42,10 +58,13 @@ const intervalId = setInterval(() => {
     } else if (point > 2000){
         block.style.animation = "blockmove 1.5s linear infinite";
     } else if (point > 1000){
-        block.style.animation = "blockmove 2s linear infinite";
+        block.style.animation = "blockmove 1.7s linear infinite";
     } else if (point > 500){
+        block.style.animation = "blockmove 2s linear infinite";
+    }else {
         block.style.animation = "blockmove 2.5s linear infinite";
     }
+
 }, 60);
 
 // random obstacle
@@ -54,6 +73,7 @@ let blockTypes = [
     '<img src="imge/middle_lane_rock1_2.png">',
     '<img src="imge/middle_lane_rock1_1.png">'
 ];
+}
 
 
 
@@ -73,8 +93,9 @@ setInterval(() => {
         dinoRect.bottom > blockRect.top + 20;
 
     if (overlap) {
-        alert("Game Over!");
+        alert("Game Over! Your Score: " + point);
         window.location.reload();
+        
     }
 
 }, 50);

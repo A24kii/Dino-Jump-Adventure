@@ -76,6 +76,38 @@ h1 {
     box-shadow: 0 3px rgba(0, 0, 0, 0.312);
 }
 
+#dinosay{
+    position: absolute;
+    background-color: #fff;
+    border: 2px gray solid;
+    padding: 15px 30px;
+    border-radius: 100px ;
+    left: 3rem;
+    bottom: 70px;
+    font-size: 12px;
+    font-weight: 900;
+}
+#dat1{
+    background-color: #fff;
+    border: 2px gray solid;
+    padding: 5px 5px;
+    left: 4rem;
+    bottom: 55px;
+    position: absolute;
+    border-radius: 50%;
+}
+#dat2{
+    background-color: #fff;
+    border: 2px gray solid;
+    padding: 3px 3px;
+    left: 3.5rem;
+    bottom: 50px;
+    position: absolute;
+    border-radius: 50%;
+}
+#showdinosay{
+    display: block;
+}
 /* Jump Animation */
 .jump {
     animation: jumpmove 0.7s linear;
@@ -155,7 +187,7 @@ h1 {
 button {
     font-size: 30px;
     font-weight: 600;
-    padding: 20px 40px;
+    padding: 20px 80px;
     border-radius: 20px;
 }
 
@@ -176,7 +208,6 @@ button:active {
     z-index: 10;
     display: flex;
     border-radius: 100px 100px 0 100px;
-    animation: blockmove 3s linear infinite;
 }
 
 @keyframes blockmove {
@@ -193,7 +224,7 @@ button:active {
 }
 
 @media (max-width: 700px) {
-    h1 { font-size: 30px; }
+    h1 { font-size: 25px; }
     #bestscr { font-size: 20px; }
 
     .view { width: 22rem; height: 23rem; }
@@ -203,5 +234,5 @@ button:active {
         margin: 25px auto;
     }
 
-    #block { animation: blockmove 2.5s linear infinite; }
+    
 }
